@@ -7,14 +7,14 @@ namespace GameClubAdmin
 {
     class BarTableModel:BaseModel
     {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
         public BarTableModel():base()
         {
 
         }
         #endregion
 
-        #region PROPERTIES
+        #region PROPERTY
 
         public string Name { get; set; }
 

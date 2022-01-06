@@ -19,17 +19,17 @@ namespace GameClubAdmin
 
         #region LISTS
 
-        List<StoreModel> store;
-        List<UserModel> user;
-        List<RoomModel> room;
-        List<TotalOutcomesModel> totalOutcomes;
-        List<OutcomesModel> outcomes;
-        List<PriceTimeModel> priceTime;
-        List<BarTableModel> barTable;
-        List<IncomesModel> incomes;
-        List<ExpensesModel> expenses;
-        List<Expenses_StoreModel> expenses_Store;
-        List<EncashModel> encash;
+       private List<StoreModel> store;
+       private List<UserModel> user;
+       private List<RoomModel> room;
+       private List<TotalOutcomesModel> totalOutcomes;
+       private List<OutcomesModel> outcomes;
+       private List<PriceTimeModel> priceTime;
+       private List<BarTableModel> barTable;
+       private List<IncomesModel> incomes;
+       private List<ExpensesModel> expenses;
+       private List<Expenses_StoreModel> expenses_Store;
+       private List<EncashModel> encash;
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace GameClubAdmin
             dataGridViewBar.DataSource = store;
         }
 
-        void ShowUsers()
+        private void ShowUsers()
         {
             user = UserModel.SelectAll();
             string query = "SELECT u.Id, u.Name, u.Password, r.Name AS Роль FROM Users u INNER JOIN Roles r ON u.RoleId=r.Id";
@@ -75,57 +75,57 @@ namespace GameClubAdmin
             finally { connection.Close(); }
         }
 
-        void ShowRooms()
+       private void ShowRooms()
         {
             room = RoomModel.SelectAll();
             dataGridViewRooms.DataSource = room;
         }
 
-        void ShowTotalOutcomes()
+       private void ShowTotalOutcomes()
         {
             totalOutcomes = TotalOutcomesModel.SelectAll();
             dataGridViewTotalSum.DataSource = totalOutcomes;
         }
 
-        void ShowOutcomes()
+       private void ShowOutcomes()
         {
             outcomes = OutcomesModel.SelectAll();
             dataGridViewSelectGoods.DataSource = outcomes;
         }
 
-        void ShowPriceTime()
+       private void ShowPriceTime()
         {
             priceTime = PriceTimeModel.SelectAll();
             dataGridViewPriceTime.DataSource = priceTime;
         }
 
-        void ShowBarTables()
+       private void ShowBarTables()
         {
             barTable = BarTableModel.SelectAll();
             dataGridViewBarTables.DataSource = barTable;
         }
 
-        void ShowIncomes()
+       private void ShowIncomes()
         {
             incomes = IncomesModel.SelectAll();
             dataGridViewIncomes.DataSource = incomes;
         }
 
-        void ShowExpenses()
+       private void ShowExpenses()
         {
             expenses = ExpensesModel.SelectAll();
             dataGridViewExpenses.DataSource = expenses;
         }
 
 
-        void ShowComboBoxRooms()
+       private void ShowComboBoxRooms()
         {
             comboBoxRooms.DisplayMember = "Name";
             comboBoxRooms.ValueMember = "Id";
             comboBoxRooms.DataSource = room;
         }
 
-        void TotalOutcomesSum()
+       private void TotalOutcomesSum()
         {
             string query = "SELECT SUM(TotalSum) FROM TotalOutcomes WHERE Date_Time BETWEEN @before AND @after";
             var before = new DateTime(dateTimePickerBeforeTotalOutcomes.Value.Year, dateTimePickerBeforeTotalOutcomes.Value.Month, dateTimePickerBeforeTotalOutcomes.Value.Day, 0, 0, 0);
@@ -153,7 +153,7 @@ namespace GameClubAdmin
             finally { connection.Close(); }
         }
 
-        void ExpensesSum()
+       private void ExpensesSum()
         {
             string query = "SELECT SUM(Price) FROM Expenses WHERE Date BETWEEN @before AND @after";
             var before = new DateTime(dateTimePickerBeforeTotalOutcomes.Value.Year, dateTimePickerBeforeTotalOutcomes.Value.Month, dateTimePickerBeforeTotalOutcomes.Value.Day, 0, 0, 0);
@@ -182,7 +182,7 @@ namespace GameClubAdmin
             finally { connection.Close(); }
         }
 
-        void EncashSum()
+       private void EncashSum()
         {
             string query = "SELECT SUM(Price) FROM Encash WHERE Date BETWEEN @before AND @after";
             var before = new DateTime(dateTimePickerBeforeTotalOutcomes.Value.Year, dateTimePickerBeforeTotalOutcomes.Value.Month, dateTimePickerBeforeTotalOutcomes.Value.Day, 0, 0, 0);
@@ -211,14 +211,14 @@ namespace GameClubAdmin
             finally { connection.Close(); }
         }
 
-        void ShowComboBoxGoods()
+       private void ShowComboBoxGoods()
         {
             comboBoxNameGoods.DisplayMember = "Name";
             comboBoxNameGoods.ValueMember = "Id";
             comboBoxNameGoods.DataSource = store;
         }
 
-        void OutcomesSum()
+       private void OutcomesSum()
         {
             string query = "SELECT SUM(AmountGoods) FROM Outcomes WHERE (NameGoods IN (SELECT Name FROM Store WHERE Id=@id)) AND (DataFinish BETWEEN @before AND @after)";
             var before = new DateTime(dateTimePickerBeforeGoodsName.Value.Year, dateTimePickerBeforeGoodsName.Value.Month, dateTimePickerBeforeGoodsName.Value.Day, 0, 0, 0);
@@ -247,7 +247,7 @@ namespace GameClubAdmin
             catch (Exception ex) { MessageBox.Show(ex.Message); }
             finally { connection.Close(); }
         }
-        void Expenses_StoreSum()
+       private void Expenses_StoreSum()
         {
             string query = "SELECT SUM(Amount) FROM Expenses_Store WHERE (Name IN (SELECT Name FROM Store WHERE Id=@id)) AND (Date BETWEEN @before AND @after)";
             var before = new DateTime(dateTimePickerBeforeGoodsName.Value.Year, dateTimePickerBeforeGoodsName.Value.Month, dateTimePickerBeforeGoodsName.Value.Day, 0, 0, 0);
@@ -277,13 +277,13 @@ namespace GameClubAdmin
             finally { connection.Close(); }
         }
 
-        void ShowExpensesStore()
+       private void ShowExpensesStore()
         {
             expenses_Store = Expenses_StoreModel.SelectAll();
             dataGridViewEncasesStore.DataSource = expenses_Store;
         }
 
-        void ShowEncash()
+       private void ShowEncash()
         {
             encash = EncashModel.SelectAll();
             dataGridViewEncash.DataSource = encash;

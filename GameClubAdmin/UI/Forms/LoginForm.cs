@@ -21,14 +21,14 @@ namespace GameClubAdmin
         
         #region FIELDS
 
-        AdminForm admin = new AdminForm();
-        WorkerForm worker = new WorkerForm();
+       private AdminForm admin = new AdminForm();
+       private WorkerForm worker = new WorkerForm();
 
         #endregion
 
         #region LIST
 
-        List<UserModel> _users;
+       private List<UserModel> _users;
         #endregion
 
         #region EVENTS
@@ -99,7 +99,7 @@ namespace GameClubAdmin
 
         #region METHOD
 
-        void ShowLogin()
+       private void ShowLogin()
         {
             _users = UserModel.SelectAll();
             comboBoxLogin.DisplayMember = "Name";

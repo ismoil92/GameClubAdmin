@@ -14,23 +14,23 @@ namespace GameClubAdmin
         private static readonly string _connectionString = string.Format("Data Source={0};FailIfMissing=False;", Environment.CurrentDirectory + "\\Data\\baza.db");
         private static SQLiteConnection connection = new SQLiteConnection(_connectionString, true);
         private static SQLiteCommand command;
-        UserContrElems userControl;
-        UserControlBarTable userbarTable;
-        ExpensesModel expenses;
-        DataTable dt = new DataTable();
-        string BarTable = "";
+        private UserContrElems userControl;
+        private UserControlBarTable userbarTable;
+        private ExpensesModel expenses;
+        private DataTable dt = new DataTable();
+        private string BarTable = "";
         #endregion
 
         #region LISTS
 
-        List<RoomModel> room;
-        List<BarTableModel> barTable;
-        List<StoreModel> Store;
-        List<ExpensesModel> expense;
-        List<EncashModel> encash;
-        List<Expenses_StoreModel> expenses_Store;
-        List<OutcomesModel> outcomes;
-        List<TotalOutcomesModel> totalOutcomes;
+       private List<RoomModel> room;
+       private List<BarTableModel> barTable;
+       private List<StoreModel> Store;
+       private List<ExpensesModel> expense;
+       private List<EncashModel> encash;
+       private List<Expenses_StoreModel> expenses_Store;
+       private List<OutcomesModel> outcomes;
+       private List<TotalOutcomesModel> totalOutcomes;
 
         #endregion
 
@@ -43,7 +43,7 @@ namespace GameClubAdmin
 
         #region METHODS
 
-        void SelectRoomName()
+       private void SelectRoomName()
         {
             int ID = cbxRooms.SelectedIndex + 1;
             string query = "SELECT Name FROM Rooms WHERE Id=@id";
@@ -80,7 +80,7 @@ namespace GameClubAdmin
         //    }
         //}
 
-        void ComboBoxRooms()
+       private void ComboBoxRooms()
         {
             room = RoomModel.SelectAll();
             cbxRooms.DisplayMember = "Name";
@@ -89,7 +89,7 @@ namespace GameClubAdmin
         }
 
 
-        void ShowRooms()
+       private void ShowRooms()
         {
             if (this.tabControlRooms.TabPages.Count == 0)
             {
@@ -106,7 +106,7 @@ namespace GameClubAdmin
             }
         }
 
-        void ShowBarTable()
+       private void ShowBarTable()
         {
             if (tabControlBarTable.TabPages.Count == 0)
             {
@@ -123,20 +123,20 @@ namespace GameClubAdmin
             }
         }
 
-        void ClearTextBox()
+       private void ClearTextBox()
         {
             textBoxExpenses.Text = "";
             textBoxPrice.Text = "";
         }
 
 
-        void ShowExpenses()
+       private void ShowExpenses()
         {
             expense = ExpensesModel.SelectAll();
             dataGridViewExpenses.DataSource = expense;
         }
 
-        void ShowComboBox()
+       private void ShowComboBox()
         {
             Store = StoreModel.SelectAll();
             comboBoxNameGood.DisplayMember = "Name";
@@ -144,13 +144,13 @@ namespace GameClubAdmin
             comboBoxNameGood.DataSource = Store;
         }
 
-        void ShowExpenses_Store()
+       private void ShowExpenses_Store()
         {
             expenses_Store = Expenses_StoreModel.SelectAll();
             dataGridViewExpenses_Store.DataSource = expenses_Store;
         }
 
-        void ShowEncash()
+       private void ShowEncash()
         {
             encash = EncashModel.SelectAll();
             dataGridViewEncash.DataSource = encash;
@@ -200,6 +200,10 @@ namespace GameClubAdmin
         private void tabControlRooms_Click(object sender, EventArgs e)
         {
             ShowRooms();
+            if(userControl.checkBoxReservation.Checked==true)
+            {
+                
+            }
         }
 
                 
@@ -556,13 +560,13 @@ namespace GameClubAdmin
             }
         }
 
-        #endregion
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             dataGridViewTotalRoom.DataSource = null;
             dt.Rows.Clear();
             dt.Columns.Clear();
         }
+
+        #endregion
     }
 }

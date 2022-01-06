@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
     class BaseModel
     {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
 
         public BaseModel()
         {
@@ -21,7 +21,7 @@ namespace GameClubAdmin
 
         #endregion
 
-        #region PROPERTIES
+        #region PROPERTY
 
         public int Id { get; set; }
 

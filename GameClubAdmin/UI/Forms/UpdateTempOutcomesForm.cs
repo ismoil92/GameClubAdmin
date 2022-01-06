@@ -10,13 +10,13 @@ namespace GameClubAdmin
         #region FIELDS
 
         internal TempOutcomesModel temp = new TempOutcomesModel();
-        StoreModel store = new StoreModel();
-       public int Total = 0;
+        private StoreModel store = new StoreModel();
+        public int Total = 0;
         #endregion
 
         #region LIST
 
-        List<StoreModel> storeModel;
+       private List<StoreModel> storeModel;
 
         #endregion
 

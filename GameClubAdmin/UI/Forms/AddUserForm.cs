@@ -8,7 +8,7 @@ namespace GameClubAdmin
     {
         #region LIST
 
-        List<RoleModel> role;
+       private List<RoleModel> role;
 
         #endregion
 
@@ -28,7 +28,7 @@ namespace GameClubAdmin
 
         #region METHOD
 
-        void ShowCombobox()
+       private void ShowCombobox()
         {
             role = RoleModel.SelectAll();
             comboBoxRoles.DisplayMember = "Name";

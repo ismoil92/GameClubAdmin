@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
     class IncomesModel:BaseModel
     {
-        #region CONSTRCUTOR
+        #region CONSTRUCTOR
         public IncomesModel():base()
         {
 

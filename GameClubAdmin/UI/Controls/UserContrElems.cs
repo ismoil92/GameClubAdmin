@@ -12,18 +12,18 @@ namespace GameClubAdmin
 
         private static readonly string _connectionString = string.Format("Data Source={0};FailIfMissing=False;", Environment.CurrentDirectory + "\\Data\\baza.db");
         private static SQLiteConnection connection = new SQLiteConnection(_connectionString, true);
-        SQLiteCommand command;
-        Timer timer;
-        Timer timerCount;
-        int secondsCount;
-        int seconds;
-        int TotalSum = 0;
-        StoreModel storeModel;
+        private SQLiteCommand command;
+        private Timer timer;
+        private Timer timerCount;
+        private int secondsCount;
+        private int seconds;
+        private int TotalSum = 0;
+        private StoreModel storeModel;
         #endregion
 
         #region METHODS
 
-        void ShowComboBox()
+       private void ShowComboBox()
         {
             store = StoreModel.SelectAll();
             comboBoxGoods.DisplayMember = "Name";
@@ -33,7 +33,7 @@ namespace GameClubAdmin
 
 
 
-        void ShowPriceTime()
+       private void ShowPriceTime()
         {
             price = PriceTimeModel.SelectAll();
             comboBoxPriceTime.DisplayMember = "Name";
@@ -41,7 +41,7 @@ namespace GameClubAdmin
             comboBoxPriceTime.DataSource = price;
         }
 
-        int InsertTempOutcomes2()
+       private int InsertTempOutcomes2()
         {
             int lastId = -1;
             string query = "INSERT INTO TempOutcomes (RoomName, Name, Price, Amount, DateOrder) VALUES((SELECT Name FROM Rooms WHERE Id=@roomId), (SELECT Name FROM Store WHERE Id=@goodId), (SELECT Price FROM Store WHERE Id=@goodId), @amount, @dateOrder)";
@@ -66,7 +66,7 @@ namespace GameClubAdmin
             return lastId;
         }
 
-        bool DeleteTempOutcomes()
+       private bool DeleteTempOutcomes()
         {
             bool isDelete = false;
             string query = "DELETE FROM TempOutcomes WHERE RoomName IN (SELECT Name FROM Rooms WHERE Id=@roomId)";
@@ -86,7 +86,7 @@ namespace GameClubAdmin
             return isDelete;
         }
 
-        int InsertOutcomes()
+       private int InsertOutcomes()
         {
             temp = TempOutcomesModel.SelectAll();
             int count = temp.Count;
@@ -132,7 +132,7 @@ namespace GameClubAdmin
             return lastId;
         }
 
-        int TotalOutcomes()
+       private int TotalOutcomes()
         {
             if (radioButtonVIPTime.Checked == true)
             {
@@ -216,7 +216,7 @@ namespace GameClubAdmin
             }
         }
 
-        string MakeTimeFormat()
+       private string MakeTimeFormat()
         {
             int totalSeconds = secondsCount;
             int hour = totalSeconds / 3600;
@@ -229,7 +229,7 @@ namespace GameClubAdmin
             return $"{hourString}:{minutesString}:{secondString}";
         }
 
-        string GetTime()
+       private string GetTime()
         {
                 int totalSeconds = seconds;
                 int hour = totalSeconds / 3600;
@@ -242,7 +242,7 @@ namespace GameClubAdmin
                 return $"{hourString}:{minutesString}:{secondString}";
         }
 
-        string GetTimeCount()
+       private string GetTimeCount()
         {
             int totalSeconds = Convert.ToInt32(textBoxTime.Text)*60- secondsCount;
             int hour = totalSeconds / 3600;
@@ -255,7 +255,7 @@ namespace GameClubAdmin
             return $"{hourString}:{minutesString}:{secondString}";
         }
 
-        void ShowTempOutcomes()
+       private void ShowTempOutcomes()
         {
             string query = "SELECT * FROM TempOutcomes WHERE RoomName IN (SELECT Name FROM Rooms WHERE Id=@roomId)";
             DataTable dt = new DataTable();
@@ -286,12 +286,12 @@ namespace GameClubAdmin
         
         #region LISTS
 
-        List<StoreModel> store;
-        List<PriceTimeModel> price;
-        List<TempOutcomesModel> temp;
-        List<TotalOutcomesModel> total;
-        List<OutcomesModel> outcome;
-        List<RoomModel> rooms;
+       private List<StoreModel> store;
+       private List<PriceTimeModel> price;
+       private List<TempOutcomesModel> temp;
+       //private List<TotalOutcomesModel> total;
+       //private List<OutcomesModel> outcome;
+       //private List<RoomModel> rooms;
         #endregion
 
         #region CONSTRUCTOR

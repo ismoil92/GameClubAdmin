@@ -24,7 +24,7 @@ namespace GameClubAdmin
 
         #endregion
 
-        #region METHODS
+        #region METHOD
 
         public static List<ReportGoods> SelectAll()
         {

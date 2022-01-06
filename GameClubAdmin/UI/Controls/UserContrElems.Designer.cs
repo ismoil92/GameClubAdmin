@@ -464,7 +464,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.CheckBox checkBoxReservation;
         private System.Windows.Forms.Label labelTotalSumByWorker;
         private System.Windows.Forms.TextBox textBoxTime;
         private System.Windows.Forms.Label labelTimeName;
@@ -482,5 +481,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        public System.Windows.Forms.CheckBox checkBoxReservation;
     }
 }

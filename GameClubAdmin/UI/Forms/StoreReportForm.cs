@@ -22,14 +22,14 @@ namespace GameClubAdmin
 
         #region LISTS
 
-        List<StoreModel> store;
-        List<StoreReportModel> storeReport;
+       private List<StoreModel> store;
+       private List<StoreReportModel> storeReport;
 
         #endregion
 
         #region METHODS
 
-        void ShowComboBox()
+       private void ShowComboBox()
         {
             store = StoreModel.SelectAll();
             comboBoxGoods.DisplayMember = "Name";
@@ -37,7 +37,7 @@ namespace GameClubAdmin
             comboBoxGoods.DataSource = store;
         }
 
-        void ShowStoreReport()
+       private void ShowStoreReport()
         {
             storeReport = StoreReportModel.SelectAll();
             dataGridView1.DataSource = storeReport;

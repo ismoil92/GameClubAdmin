@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
      class StoreModel : BaseModel
     {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
         public StoreModel():base()
         {
 

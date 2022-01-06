@@ -23,6 +23,8 @@ namespace GameClubAdmin
         public string Date { get; set; }
         public string Type { get; set; }
 
+        #endregion
+
         #region METHODS
 
         public static List<StoreReportModel> SelectAll()
@@ -39,8 +41,6 @@ namespace GameClubAdmin
         {
             return DBManager.DeleteStoreReportById(tableId);
         }
-
-        #endregion
 
         #endregion
     }

@@ -8,14 +8,14 @@ namespace GameClubAdmin
    
     class RoomModel :BaseModel
     {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
         public RoomModel() : base()
         {
 
         }
         #endregion
 
-        #region PROPERTIES
+        #region PROPERTY
         public string Name { get; set; }
         #endregion
 

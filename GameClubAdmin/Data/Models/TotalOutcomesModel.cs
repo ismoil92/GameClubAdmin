@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
     class TotalOutcomesModel:BaseModel
     {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
         public TotalOutcomesModel():base()
         {
 

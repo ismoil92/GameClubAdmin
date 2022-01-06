@@ -10,11 +10,11 @@ namespace GameClubAdmin
     {
         #region FIELDS
 
-        int TotalSum = 0;
+        private int TotalSum = 0;
         private static readonly string _connectionString = string.Format("Data Source={0};FailIfMissing=False;", Environment.CurrentDirectory + "\\Data\\baza.db");
         private static SQLiteConnection connection = new SQLiteConnection(_connectionString, true);
-        SQLiteCommand command;
-        StoreModel storeModel;
+        private SQLiteCommand command;
+        private StoreModel storeModel;
 
         #endregion
 
@@ -36,14 +36,14 @@ namespace GameClubAdmin
 
         #region LISTS
 
-        List<StoreModel> store;
-        List<TempOutcomesModel> temp;
+       private List<StoreModel> store;
+       private List<TempOutcomesModel> temp;
 
         #endregion
 
         #region METHODS
 
-        void ShowStore()
+       private void ShowStore()
         {
             store = StoreModel.SelectAll();
             comboBoxNameGoods.DisplayMember = "Name";
@@ -51,7 +51,7 @@ namespace GameClubAdmin
             comboBoxNameGoods.DataSource = store;
         }
 
-        int InsertTempOutcomes()
+       private int InsertTempOutcomes()
         {
             int lastId = -1;
             string query = "INSERT INTO TempOutcomes(RoomName, Name, Price, Amount, DateOrder) VALUES((SELECT Name FROM BarTables WHERE Id=@barTableId),  (SELECT Name FROM Store WHERE Id=@goodId), (SELECT Price FROM Store WHERE Id=@goodId), @amount, @dateOrder)";
@@ -76,7 +76,7 @@ namespace GameClubAdmin
             return lastId;
         }
 
-        bool DeleteTempOutcomes()
+       private bool DeleteTempOutcomes()
         {
             bool isDelete = false;
             string query = "DELETE FROM TempOutcomes WHERE RoomName IN (SELECT Name FROM BarTables WHERE Id=@barTableId)";
@@ -96,7 +96,7 @@ namespace GameClubAdmin
             return isDelete;
         }
 
-        int InsertOutcomes()
+       private int InsertOutcomes()
         {
             temp = TempOutcomesModel.SelectAll();
             int lastId = -1;
@@ -138,7 +138,7 @@ namespace GameClubAdmin
             return lastId;
         }
 
-        int InsertTotalOutcomes()
+       private int InsertTotalOutcomes()
         {
             int lastId = -1;
             string query = "INSERT INTO TotalOutcomes(RoomId, DateStart, DateFinish, TotalSum) VALUES((SELECT RoomId FROM Outcomes WHERE RoomId IN (SELECT Name FROM BarTables WHERE Id=@barTableId)), @dateStart, @dateFinish, @price)";
@@ -176,7 +176,7 @@ namespace GameClubAdmin
             return lastId;
         }
 
-        void ShowTempOutcomes()
+       private void ShowTempOutcomes()
         {
             string query = "SELECT * FROM TempOutcomes WHERE RoomName IN (SELECT Name FROM BarTables WHERE Id=@barTableId)";
             DataTable dt = new DataTable();

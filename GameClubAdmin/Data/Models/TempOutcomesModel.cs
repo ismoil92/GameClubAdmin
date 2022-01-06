@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
     class TempOutcomesModel : BaseModel
     {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
 
         public TempOutcomesModel():base()
         {

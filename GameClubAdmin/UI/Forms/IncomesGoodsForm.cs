@@ -13,7 +13,7 @@ namespace GameClubAdmin
     {
         #region FIELD
 
-        IncomesModel income;
+       private IncomesModel income;
 
         #endregion
 

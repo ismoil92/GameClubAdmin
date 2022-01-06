@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
     class RoleModel : BaseModel
     {
-        #region CONTRUCTORS
+        #region CONTRUCTOR
 
         public RoleModel() : base()
         {
@@ -16,7 +16,7 @@ namespace GameClubAdmin
 
         #endregion
 
-        #region PROPERTIES
+        #region PROPERTY
 
         public string Name { get; set; }
 

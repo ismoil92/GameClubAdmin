@@ -14,7 +14,7 @@ namespace GameClubAdmin
 
         #region LIST
 
-        List<StoreModel> stores;
+       private List<StoreModel> stores;
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace GameClubAdmin
 
         #region METHOD
 
-        void InsertGoods()
+       private void InsertGoods()
         {
             store.Name = textBoxName.Text;
             store.Price = int.Parse(textBoxPrice.Text);

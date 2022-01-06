@@ -8,7 +8,7 @@ namespace GameClubAdmin
     class PriceTimeModel :BaseModel
     {
 
-        #region CONSTRCUTORS
+        #region CONSTRUCTOR
 
         public PriceTimeModel():base()
         {
@@ -16,7 +16,6 @@ namespace GameClubAdmin
         }
 
         #endregion
-
 
         #region PROPERTIES
 

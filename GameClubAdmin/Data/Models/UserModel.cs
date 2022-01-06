@@ -7,7 +7,7 @@ namespace GameClubAdmin
 {
     class UserModel : BaseModel
     {
-        #region CONTRUCTORS
+        #region CONTRUCTOR
 
         public UserModel() : base()
         {
